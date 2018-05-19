@@ -2,7 +2,7 @@ import json
 import requests
 
 
-class MovieSearch:
+class GetMovie:
     def __init__(self, api_key, title, plot=None):
         """
         instantiate the class, passing api key and title as parameter.

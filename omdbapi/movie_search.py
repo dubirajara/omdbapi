@@ -23,7 +23,7 @@ class GetMovie:
         self.values = json.loads(self.response.text)
 
     def __repr__(self):
-        return f"MovieSearch('{self.api_key}', '{self.title}')"
+        return f"GetMovie('{self.api_key}', '{self.title}')"
 
     def get_all_data(self):
         """
@@ -46,7 +46,6 @@ class GetMovie:
         :Example:
         m.get_data('Director', 'Actors')
         """
-        items = {}
-        for item in args:
-            items[item] = self.values[item.title()]
+        items = {item: self.values.get(item, 'key not found!') for item in args}
         return items
+

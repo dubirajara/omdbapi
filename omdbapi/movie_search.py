@@ -48,4 +48,3 @@ class GetMovie:
         """
         items = {item: self.values.get(item, 'key not found!') for item in args}
         return items
-

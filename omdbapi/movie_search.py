@@ -12,9 +12,9 @@ class GetMovie:
         :param plot: optional, description plot, default return short plot or set full.
 
         :Example:
-        m = MovieSearch('your api key', 'title movie')
+        m = GetMovie('your api key', 'title movie')
         :Example:
-        m = MovieSearch('your api key', 'title movie' 'full')
+        m = GetMovie('your api key', 'title movie' 'full')
         """
         self.title = title
         self.api_key = api_key

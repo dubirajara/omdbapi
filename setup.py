@@ -63,9 +63,8 @@ def find_package_data(
                             or fn.lower() == pattern.lower()):
                         bad_name = True
                         if show_ignored:
-                            print >> sys.stderr, (
-                                    "Directory %s ignored by pattern %s"
-                                    % (fn, pattern))
+                            print("Directory %s ignored by pattern %s" %
+                                  (fn, pattern), file=sys.stderr)
                         break
                 if bad_name:
                     continue
@@ -86,15 +85,13 @@ def find_package_data(
                             or fn.lower() == pattern.lower()):
                         bad_name = True
                         if show_ignored:
-                            print >> sys.stderr, (
-                                    "File %s ignored by pattern %s"
-                                    % (fn, pattern))
+                            print("File %s ignored by pattern %s" %
+                                  (fn, pattern), file=sys.stderr)
                         break
                 if bad_name:
                     continue
                 out.setdefault(package, []).append(prefix + name)
     return out
-
 
 PACKAGE = "omdbapi"
 NAME = PACKAGE

@@ -93,6 +93,7 @@ def find_package_data(
                 out.setdefault(package, []).append(prefix + name)
     return out
 
+
 PACKAGE = "omdbapi"
 NAME = PACKAGE
 DESCRIPTION = "Example build and distribution python projects - Pytools course."

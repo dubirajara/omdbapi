@@ -33,7 +33,7 @@ class GetMovie:
         if self.values['Response'] == 'True':
             return self.values
         else:
-            print(self.values['Error'])
+            return self.values['Error']
 
     def get_data(self, *args):
         """

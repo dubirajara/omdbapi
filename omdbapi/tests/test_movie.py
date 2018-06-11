@@ -6,7 +6,7 @@ from omdbapi import movie_search
 
 
 @pytest.fixture
-def movie_url(mocker):
+def get_movie(mocker):
     resp_mock = Mock()
     resp_mock.json.return_value = {
         'Title': 'Star Wars: Episode IV - A New Hope',
@@ -28,9 +28,8 @@ def movie_url(mocker):
     'movie',
     ['Title', 'Awards', 'Year', 'Genre', 'Writer', 'Response', 'Actors', 'Director']
 )
-def test_get_movie(movie, movie_url):
-    url = movie_url.get_all_data()
-    # assert url['Response'] == 'True'
+def test_get_all_data(movie, get_movie):
+    url = get_movie.get_all_data()
     assert movie in url
 
 
@@ -42,11 +41,11 @@ def test_repr():
     'movie',
     ['Title', 'Awards', 'Year']
 )
-def test_get_data(movie, movie_url):
-    url = movie_url.get_data('Title', 'Awards', 'Year')
+def test_get_data(movie, get_movie):
+    url = get_movie.get_data('Title', 'Awards', 'Year')
     assert movie in url
 
 
 def test_get_data_invalid():
-    url = movie_search.GetMovie('1111', 'star wars').values['Error']
-    assert url == 'Invalid API key!'
+    url = movie_search.GetMovie('1111', 'star wars')
+    assert url.get_all_data() == 'Invalid API key!'

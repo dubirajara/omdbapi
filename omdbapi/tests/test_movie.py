@@ -5,11 +5,8 @@ import pytest
 from omdbapi import movie_search
 
 
-@pytest.mark.parametrize(
-    'movie',
-    ['Title', 'Awards', 'Year', 'Genre', 'Writer', 'Response', 'Actors', 'Director']
-)
-def test_get_movie(movie):
+@pytest.fixture
+def movie_url(mocker):
     resp_mock = Mock()
     resp_mock.json.return_value = {
         'Title': 'Star Wars: Episode IV - A New Hope',
@@ -21,8 +18,18 @@ def test_get_movie(movie):
         'Awards': 'Won 6 Oscars. Another 50 wins & 28 nominations.',
         'Response': 'True'
          }
-    movie_search.requests.get = Mock(return_value=resp_mock)
-    url = movie_search.GetMovie('12345', 'star wars').get_all_data()
+    get_mock = mocker.patch('omdbapi.movie_search.requests.get')
+    get_mock.return_value = resp_mock
+    url = movie_search.GetMovie('12345', 'star wars')
+    return url
+
+
+@pytest.mark.parametrize(
+    'movie',
+    ['Title', 'Awards', 'Year', 'Genre', 'Writer', 'Response', 'Actors', 'Director']
+)
+def test_get_movie(movie, movie_url):
+    url = movie_url.get_all_data()
     # assert url['Response'] == 'True'
     assert movie in url
 
@@ -35,6 +42,11 @@ def test_repr():
     'movie',
     ['Title', 'Awards', 'Year']
 )
-def test_get_data(movie):
-    url = movie_search.GetMovie('12345', 'star wars').get_data('Title', 'Awards', 'Year')
+def test_get_data(movie, movie_url):
+    url = movie_url.get_data('Title', 'Awards', 'Year')
     assert movie in url
+
+
+def test_get_data_invalid():
+    url = movie_search.GetMovie('1111', 'star wars').values['Error']
+    assert url == 'Invalid API key!'

@@ -19,7 +19,6 @@ class GetMovie:
         self.api_key = api_key
         self.url = f'http://www.omdbapi.com/?t={self.title}&y=&plot={plot}&r=json&apikey={self.api_key}'
         self.values = requests.get(self.url).json()
-        # self.values = json.loads(self.response.text)
 
     def __repr__(self):
         return f"GetMovie('{self.api_key}', '{self.title}')"

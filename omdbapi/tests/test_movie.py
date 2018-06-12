@@ -20,8 +20,8 @@ def get_movie(mocker):
          }
     get_mock = mocker.patch('omdbapi.movie_search.requests.get')
     get_mock.return_value = resp_mock
-    url = movie_search.GetMovie('12345', 'star wars')
-    return url
+    data_movie = movie_search.GetMovie('12345', 'star wars')
+    return data_movie
 
 
 @pytest.mark.parametrize(
@@ -29,8 +29,8 @@ def get_movie(mocker):
     ['Title', 'Awards', 'Year', 'Genre', 'Writer', 'Response', 'Actors', 'Director']
 )
 def test_get_all_data(movie, get_movie):
-    url = get_movie.get_all_data()
-    assert movie in url
+    data_movie = get_movie.get_all_data()
+    assert movie in data_movie
 
 
 def test_repr():
@@ -42,8 +42,8 @@ def test_repr():
     ['Title', 'Awards', 'Year']
 )
 def test_get_data(movie, get_movie):
-    url = get_movie.get_data('Title', 'Awards', 'Year')
-    assert movie in url
+    data_movie = get_movie.get_data('Title', 'Awards', 'Year')
+    assert movie in data_movie
 
 
 def test_get_data_invalid():

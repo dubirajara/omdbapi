@@ -46,6 +46,11 @@ def test_get_data(movie, get_movie):
     assert movie in data_movie
 
 
+def test_data_key_not_found(get_movie):
+    data_movie = get_movie.get_data('Plot')
+    assert data_movie['Plot'] == 'key not found!'
+
+
 def test_get_data_invalid():
     url = movie_search.GetMovie('1111', 'star wars')
     assert url.get_all_data() == 'Invalid API key!'

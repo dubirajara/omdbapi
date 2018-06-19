@@ -13,7 +13,7 @@ class GetMovie:
         :Example:
         m = GetMovie('your api key', 'title movie')
         :Example:
-        m = GetMovie('your api key', 'title movie' 'full')
+        m = GetMovie('your api key', 'title movie', 'full')
         """
         self.title = title
         self.api_key = api_key

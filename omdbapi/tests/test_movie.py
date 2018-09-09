@@ -26,7 +26,7 @@ def get_movie(mocker):
 
 @pytest.mark.parametrize(
     'movie',
-    ['Title', 'Awards', 'Year', 'Genre', 'Writer', 'Response', 'Actors', 'Director']
+    ('Title', 'Awards', 'Year', 'Genre', 'Writer', 'Response', 'Actors', 'Director')
 )
 def test_get_all_data(movie, get_movie):
     data_movie = get_movie.get_all_data()
@@ -39,7 +39,7 @@ def test_repr():
 
 @pytest.mark.parametrize(
     'movie',
-    ['Title', 'Awards', 'Year']
+    ('Title', 'Awards', 'Year')
 )
 def test_get_data(movie, get_movie):
     data_movie = get_movie.get_data('Title', 'Awards', 'Year')

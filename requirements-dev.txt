@@ -5,7 +5,7 @@ pyflakes==2.0.0
 pycodestyle==2.3.1
 
 # pytest
-py==1.6.0
+py==1.7.0
 more-itertools==4.3.0
 six==1.11.0
 attrs==18.2.0

@@ -1,5 +1,7 @@
 import requests
 
+url = 'http://www.omdbapi.com/'
+
 
 class GetMovie:
     def __init__(self, api_key, title, plot=None):
@@ -17,8 +19,8 @@ class GetMovie:
         """
         self.title = title
         self.api_key = api_key
-        self.url = f'http://www.omdbapi.com/?t={self.title}&y=&plot={plot}&r=json&apikey={self.api_key}'
-        self.values = requests.get(self.url).json()
+        self.payload = {'t': self.title, 'plot': plot, 'r': 'json', 'apikey': self.api_key}
+        self.values = requests.get(url, params=self.payload).json()
 
     def __repr__(self):
         return f"GetMovie('{self.api_key}', '{self.title}')"
@@ -45,4 +47,5 @@ class GetMovie:
         m.get_data('Director', 'Actors')
         """
         items = {item: self.values.get(item, 'key not found!') for item in args}
+
         return items

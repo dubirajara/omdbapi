@@ -1,20 +1,20 @@
 # flake8
 flake8==3.6.0
 mccabe==0.6.1
-pyflakes==2.0.0
-pycodestyle==2.4.0
+pyflakes==2.1.0
+pycodestyle==2.5.0
 
 # pytest
 py==1.7.0
 more-itertools==5.0.0
 six==1.12.0
 attrs==18.2.0
-pluggy==0.8.0
-pytest==4.0.2
+pytest==4.2.0
+pluggy==0.8.1
 pytest-mock==1.10.0
 
 #Coverage
 coverage==4.5.2
-pytest-cov==2.6.0
+pytest-cov==2.6.1
 
 -r requirements.txt

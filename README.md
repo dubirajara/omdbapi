@@ -29,7 +29,7 @@ import the library and get movie, passing api key and title as parameter, defaul
 
 Or can set full plot as parameter:
 ```python
->>> movie = GetMovie('Interstellar', 'your api key')
+>>> movie = GetMovie('Interstellar', 'your api key', 'full')
 ```
 
 

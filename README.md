@@ -24,12 +24,13 @@ import the library and get movie, passing api key and title as parameter, defaul
 ```python
 >>> from omdbapi.movie_search import GetMovie
 
->>> movie = GetMovie('your api key', 'star wars')
+>>> movie = GetMovie('star wars', 'your api key')
 ```
 
 Or can set full plot as parameter:
 ```python
->>> movie = GetMovie('your api key', 'star wars', 'full')
+>>> movie = GetMovie('star wars', 'your api key')
+```
 ```
 
 Get all data movie json format:

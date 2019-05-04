@@ -34,7 +34,8 @@ def test_get_all_data(movie, get_movie):
 
 
 def test_repr():
-    assert repr(movie_search.GetMovie('12345', 'star wars')) == "GetMovie('12345', 'star wars')"
+    movie = movie_search.GetMovie('12345', 'star wars')
+    assert repr(movie) == "GetMovie(title='12345', api_key='star wars', plot=None)"
 
 
 @pytest.mark.parametrize(

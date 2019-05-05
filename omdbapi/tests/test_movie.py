@@ -20,7 +20,7 @@ def get_movie(mocker):
          }
     get_mock = mocker.patch('omdbapi.movie_search.requests.get')
     get_mock.return_value = resp_mock
-    data_movie = movie_search.GetMovie('12345', 'star wars')
+    data_movie = movie_search.GetMovie(title='star wars', api_key='12345')
     return data_movie
 
 
@@ -34,8 +34,8 @@ def test_get_all_data(movie, get_movie):
 
 
 def test_repr():
-    movie = movie_search.GetMovie('12345', 'star wars')
-    assert repr(movie) == "GetMovie(title='12345', api_key='star wars', plot=None)"
+    movie = movie_search.GetMovie(api_key='12345', title='star wars')
+    assert repr(movie) == "GetMovie(title='star wars', api_key='12345', plot=None)"
 
 
 @pytest.mark.parametrize(
@@ -53,5 +53,5 @@ def test_data_key_not_found(get_movie):
 
 
 def test_get_data_invalid():
-    url = movie_search.GetMovie('1111', 'star wars')
+    url = movie_search.GetMovie(title='star wars', api_key='1111')
     assert url.get_all_data() == 'Invalid API key!'

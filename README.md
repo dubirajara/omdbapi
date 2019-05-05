@@ -24,12 +24,12 @@ import the library and get movie, passing api key and title as parameter, defaul
 ```python
 >>> from omdbapi.movie_search import GetMovie
 
->>> movie = GetMovie('Interstellar', 'your api key')
+>>> movie = GetMovie(title='Interstellar', api_key='your api key')
 ```
 
 Or can set full plot as parameter:
 ```python
->>> movie = GetMovie('Interstellar', 'your api key', 'full')
+>>> movie = GetMovie(title='Interstellar', api_key='your api key', plot='full')
 ```
 
 

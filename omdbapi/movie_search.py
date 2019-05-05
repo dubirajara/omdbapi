@@ -6,18 +6,18 @@ url = 'http://www.omdbapi.com/'
 
 
 @dataclass
-class GetMovie(object):
+class GetMovie:
     """
     instantiate the class, passing api key and title as parameter.
 
-    :param api_key: ombdapi key
     :param title: title movie
+    :param api_key: ombdapi key
     :param plot: optional, description plot, default return short plot or set full.
 
     :Example:
-    m = GetMovie('your api key', 'title movie')
+    m = GetMovie('title movie', 'your api key')
     :Example:
-    m = GetMovie('your api key', 'title movie', 'full')
+    m = GetMovie(title movie', 'your api key', 'full')
     """
     title: str
     api_key: str

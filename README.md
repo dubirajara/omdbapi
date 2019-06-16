@@ -11,13 +11,17 @@ Used [The Open Movie Database](http://www.omdbapi.com) api to build a python lib
 
 ## How to use? 
 
-**IMPORTANT**: Requires Python 3.7 or newer.
+**IMPORTANT**: Requires Python 3.7 or newer. To works with python 3.6 must install the versión 0.5.1.
 
 #### Before, you must be request free the omdbapi api key [here](http://www.omdbapi.com/apikey.aspx?__EVENTTARGET=freeAcct&__EVENTARGUMENT=&__LASTFOCUS=&__VIEWSTATE=%2FwEPDwUKLTIwNDY4MTIzNQ9kFgYCAQ9kFgICBw8WAh4HVmlzaWJsZWhkAgIPFgIfAGhkAgMPFgIfAGhkGAEFHl9fQ29udHJvbHNSZXF1aXJlUG9zdEJhY2tLZXlfXxYDBQtwYXRyZW9uQWNjdAUIZnJlZUFjY3QFCGZyZWVBY2N0x0euvR%2FzVv1jLU3mGetH4R3kWtYKWACCaYcfoP1IY8g%3D&__VIEWSTATEGENERATOR=5E550F58&__EVENTVALIDATION=%2FwEdAAU5GG7XylwYou%2BzznFv7FbZmSzhXfnlWWVdWIamVouVTzfZJuQDpLVS6HZFWq5fYpioiDjxFjSdCQfbG0SWduXFd8BcWGH1ot0k0SO7CfuulN6vYN8IikxxqwtGWTciOwQ4e4xie4N992dlfbpyqd1D&at=freeAcct&Email=)
 
-Install the library:
+Install the library, Python 3.7 or newer:
 ```python
 >>> pip install omdbapi
+```
+To works with python 3.6 must install the versión 0.5.1
+```python
+>>> pip install omdbapi==0.5.1
 ```
 
 import the library and get movie, passing api key and title as parameter, default return short plot:

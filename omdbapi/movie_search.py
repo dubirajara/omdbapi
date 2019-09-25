@@ -33,10 +33,9 @@ class GetMovie:
         :Example:
         m.get_all_data()
         """
-        if self.values['Response'] == 'True':
-            return self.values
-        else:
-            return self.values['Error']
+        values = self.values if self.values['Response'] == 'True' else self.values['Error']
+
+        return values
 
     def get_data(self, *args):
         """

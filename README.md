@@ -3,7 +3,7 @@
 [![codecov](https://codecov.io/gh/dubirajara/omdbapi/branch/master/graph/badge.svg)](https://codecov.io/gh/dubirajara/omdbapi)
 
 Python lib to get movie, series, episode data from the Open Movie Database (OMDb) api.
-Example build and distribution python projects - [Pytools](http://www.python.pro.br) course.
+Example build and distribution python projects - [Pytools](https://www.python.pro.br/modulos/descricao/pytools/) course.
 
 Used [The Open Movie Database](http://www.omdbapi.com) api to build a python lib and distribution in [pypi](https://pypi.org/project/omdbapi/).
 

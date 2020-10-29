@@ -1,4 +1,6 @@
 # omdbapi python library.
+
+[![PyPI version](https://badge.fury.io/py/omdbapi.svg)](https://badge.fury.io/py/omdbapi)
 [![Build Status](https://travis-ci.org/dubirajara/omdbapi.svg?branch=master)](https://travis-ci.org/dubirajara/omdbapi)
 [![codecov](https://codecov.io/gh/dubirajara/omdbapi/branch/master/graph/badge.svg)](https://codecov.io/gh/dubirajara/omdbapi)
 

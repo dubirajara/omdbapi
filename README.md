@@ -1,7 +1,5 @@
 # omdbapi python library.
 [![Build Status](https://travis-ci.org/dubirajara/omdbapi.svg?branch=master)](https://travis-ci.org/dubirajara/omdbapi)
-[![Updates](https://pyup.io/repos/github/dubirajara/omdbapi/shield.svg)](https://pyup.io/repos/github/dubirajara/omdbapi/)
-[![Python 3](https://pyup.io/repos/github/dubirajara/omdbapi/python-3-shield.svg)](https://pyup.io/repos/github/dubirajara/omdbapi/)
 [![codecov](https://codecov.io/gh/dubirajara/omdbapi/branch/master/graph/badge.svg)](https://codecov.io/gh/dubirajara/omdbapi)
 
 Python lib to get movie, series, episode data from the Open Movie Database (OMDb) api.

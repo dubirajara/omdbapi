@@ -28,54 +28,81 @@ import the library and get movie, passing api key and title as parameter, defaul
 ```python
 >>> from omdbapi.movie_search import GetMovie
 
->>> movie = GetMovie(title='Interstellar', api_key='your api key')
+>>> movie = GetMovie(api_key='your api key')
 ```
-
-Or can set full plot as parameter:
-```python
->>> movie = GetMovie(title='Interstellar', api_key='your api key', plot='full')
-```
-
 
 Get all data movie json format:
 ```python
->>> movie.get_all_data()
+>>> movie.get_movie(title='Interstellar')
 
-{'Title': 'Interstellar',
- 'Year': '2014',
- 'Rated': 'PG-13',
- 'Released': '07 Nov 2014',
- 'Runtime': '169 min',
- 'Genre': 'Adventure, Drama, Sci-Fi',
- 'Director': 'Christopher Nolan',
- 'Writer': 'Jonathan Nolan, Christopher Nolan',
- 'Actors': 'Ellen Burstyn, Matthew McConaughey, Mackenzie Foy, John Lithgow',
- 'Plot': "A team of explorers travel through a wormhole in space in an attempt to ensure humanity's survival.",
- 'Language': 'English',
- 'Country': 'USA, UK, Canada',
- 'Awards': 'Won 1 Oscar. Another 43 wins & 143 nominations.',
- 'Poster': 'https://m.media-amazon.com/images/M/MV5BZjdkOTU3MDktN2IxOS00OGEyLWFmMjktY2FiMmZkNWIyODZiXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_SX300.jpg',
- 'Ratings': [{'Source': 'Internet Movie Database', 'Value': '8.6/10'},
+{'title': 'Interstellar',
+ 'year': '2014',
+ 'rated': 'PG-13',
+ 'released': '07 Nov 2014',
+ 'runtime': '169 min',
+ 'genre': 'Adventure, Drama, Sci-Fi',
+ 'director': 'Christopher Nolan',
+ 'writer': 'Jonathan Nolan, Christopher Nolan',
+ 'actors': 'Ellen Burstyn, Matthew McConaughey, Mackenzie Foy, John Lithgow',
+ 'plot': "A team of explorers travel through a wormhole in space in an attempt to ensure humanity's survival.",
+ 'language': 'English',
+ 'country': 'USA, UK, Canada',
+ 'awards': 'Won 1 Oscar. Another 43 wins & 148 nominations.',
+ 'poster': 'https://m.media-amazon.com/images/M/MV5BZjdkOTU3MDktN2IxOS00OGEyLWFmMjktY2FiMmZkNWIyODZiXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_SX300.jpg',
+ 'ratings': [{'Source': 'Internet Movie Database', 'Value': '8.6/10'},
   {'Source': 'Rotten Tomatoes', 'Value': '72%'},
   {'Source': 'Metacritic', 'Value': '74/100'}],
- 'Metascore': '74',
- 'imdbRating': '8.6',
- 'imdbVotes': '1,275,886',
- 'imdbID': 'tt0816692',
- 'Type': 'movie',
- 'DVD': '31 Mar 2015',
- 'BoxOffice': '$158,737,441',
- 'Production': 'Paramount Pictures',
- 'Website': 'http://www.InterstellarMovie.com/',
- 'Response': 'True'}
+ 'metascore': '74',
+ 'imdbrating': '8.6',
+ 'imdbvotes': '1,569,520',
+ 'imdbid': 'tt0816692',
+ 'type': 'movie',
+ 'dvd': '24 May 2016',
+ 'boxoffice': '$188,020,017',
+ 'production': 'Lynda Obst Productions, Syncopy',
+ 'website': 'N/A',
+ 'response': 'True'}
+
+```
+Or can set full plot as parameter:
+```python
+>>> movie.get_movie(title='Interstellar', plot='full')
+{'title': 'Interstellar',
+ 'year': '2014',
+ 'rated': 'PG-13',
+ 'released': '07 Nov 2014',
+ 'runtime': '169 min',
+ 'genre': 'Adventure, Drama, Sci-Fi',
+ 'director': 'Christopher Nolan',
+ 'writer': 'Jonathan Nolan, Christopher Nolan',
+ 'actors': 'Ellen Burstyn, Matthew McConaughey, Mackenzie Foy, John Lithgow',
+ 'plot': "Earth's future has been riddled by disasters, famines, and droughts. There is only one way to ensure mankind's survival: Interstellar travel. A newly discovered wormhole in the far reaches of our solar system allows a team of astronauts to go where no man has gone before, a planet that may have the right environment to sustain human life.",
+ 'language': 'English',
+ 'country': 'USA, UK, Canada',
+ 'awards': 'Won 1 Oscar. Another 43 wins & 148 nominations.',
+ 'poster': 'https://m.media-amazon.com/images/M/MV5BZjdkOTU3MDktN2IxOS00OGEyLWFmMjktY2FiMmZkNWIyODZiXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_SX300.jpg',
+ 'ratings': [{'Source': 'Internet Movie Database', 'Value': '8.6/10'},
+  {'Source': 'Rotten Tomatoes', 'Value': '72%'},
+  {'Source': 'Metacritic', 'Value': '74/100'}],
+ 'metascore': '74',
+ 'imdbrating': '8.6',
+ 'imdbvotes': '1,569,520',
+ 'imdbid': 'tt0816692',
+ 'type': 'movie',
+ 'dvd': '24 May 2016',
+ 'boxoffice': '$188,020,017',
+ 'production': 'Lynda Obst Productions, Syncopy',
+ 'website': 'N/A',
+ 'response': 'True'}
+
 ```
 
 Get values using keys as parameter:
 ```python
->>> movie.get_data('Director', 'Actors', 'Awards', 'Plot')
+>>> movie.get_data('director', 'actors', 'awards', 'plot')
 
-{'Director': 'Christopher Nolan',
- 'Actors': 'Ellen Burstyn, Matthew McConaughey, Mackenzie Foy, John Lithgow',
- 'Awards': 'Won 1 Oscar. Another 43 wins & 143 nominations.',
- 'Plot': "A team of explorers travel through a wormhole in space in an attempt to ensure humanity's survival."}
+{'director': 'Christopher Nolan',
+ 'actors': 'Ellen Burstyn, Matthew McConaughey, Mackenzie Foy, John Lithgow',
+ 'awards': 'Won 1 Oscar. Another 43 wins & 148 nominations.',
+ 'plot': "A team of explorers travel through a wormhole in space in an attempt to ensure humanity's survival."}
 ```

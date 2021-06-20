@@ -96,7 +96,7 @@ def find_package_data(
 
 PACKAGE = "omdbapi"
 NAME = PACKAGE
-DESCRIPTION = "Python lib to get movie, series, episode data from the Open Movie Database (OMDb) api."
+DESCRIPTION = "Wrapper to get movie, series, episode data from the Open Movie Database (OMDb) api."
 AUTHOR = "Diego Ubirajara"
 AUTHOR_EMAIL = "diego.ubirajara@mail.com"
 URL = "https://github.com/dubirajara/omdbapi"

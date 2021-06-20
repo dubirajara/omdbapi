@@ -2,40 +2,33 @@ from dataclasses import dataclass
 
 import requests
 
-url = 'http://www.omdbapi.com/'
-
 
 @dataclass
 class GetMovie:
     """
-    instantiate the class, passing api key and title as parameter.
+    instantiate the class, passing api key.
 
-    :param title: title movie
     :param api_key: ombdapi key
-    :param plot: optional, description plot, default return short plot or set full.
 
     :Example:
-    m = GetMovie(title='title movie', api_key='your api key')
-    :Example:
-    m = GetMovie(title='title movie', api_key='your api key', plot='full')
+    movie = GetMovie(api_key='your api key')
     """
-    title: str
     api_key: str
-    plot: str = None
+    values: dict = None
 
-    def __post_init__(self):
-        payload = {'t': self.title, 'plot': self.plot, 'r': 'json', 'apikey': self.api_key}
-        self.values = requests.get(url, params=payload).json()
-
-    def get_all_data(self):
+    def get_movie(self, title, plot=None):
         """
-        Get all data movie, key: value
+        Get all data movie.
+        :param title: movie title to search
+        :param plot: by default return short plot
         :Example:
-        m.get_all_data()
+        movie.get_movie(title='Interstellar', plot='full'))
         """
-        values = self.values if self.values['Response'] == 'True' else self.values['Error']
-
-        return values
+        url = 'http://www.omdbapi.com/'
+        payload = {'t': title, 'plot': plot, 'r': 'json', 'apikey': self.api_key}
+        result = requests.get(url, params=payload).json()
+        self.values = {k.lower(): v for k, v in result.items()} if result['Response'] == 'True' else result['Error']
+        return self.values
 
     def get_data(self, *args):
         """
@@ -44,8 +37,8 @@ class GetMovie:
         :param *args: items data key
 
         :Example:
-        m.get_data('Director', 'Actors')
+        movie.get_data('Director', 'Actors')
         """
-        items = {item: self.values.get(item, 'key not found!') for item in args}
+        items = {item.lower(): self.values.get(item.lower(), 'key not found!') for item in args}
 
         return items

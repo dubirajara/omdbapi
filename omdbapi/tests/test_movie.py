@@ -20,38 +20,40 @@ def get_movie(mocker):
          }
     get_mock = mocker.patch('omdbapi.movie_search.requests.get')
     get_mock.return_value = resp_mock
-    data_movie = movie_search.GetMovie(title='star wars', api_key='12345')
-    return data_movie
+    movie = movie_search.GetMovie(api_key='12345')
+    return movie
 
 
 @pytest.mark.parametrize(
-    'movie',
-    ('Title', 'Awards', 'Year', 'Genre', 'Writer', 'Response', 'Actors', 'Director')
+    'expected',
+    ('title', 'awards', 'year', 'genre', 'writer', 'response', 'actors', 'director')
 )
-def test_get_all_data(movie, get_movie):
-    data_movie = get_movie.get_all_data()
-    assert movie in data_movie
+def test_get_all_data(expected, get_movie):
+    movie = get_movie.get_movie(title='star wars')
+    assert expected in movie
 
 
 def test_repr():
-    movie = movie_search.GetMovie(api_key='12345', title='star wars')
-    assert repr(movie) == "GetMovie(title='star wars', api_key='12345', plot=None)"
+    movie = movie_search.GetMovie(api_key='12345')
+    assert repr(movie) == "GetMovie(api_key='12345', values=None)"
 
 
 @pytest.mark.parametrize(
-    'movie',
-    ('Title', 'Awards', 'Year')
+    'expected',
+    ('title', 'awards', 'year')
 )
-def test_get_data(movie, get_movie):
+def test_get_data(expected, get_movie):
+    get_movie.get_movie(title='star wars')
     data_movie = get_movie.get_data('Title', 'Awards', 'Year')
-    assert movie in data_movie
+    assert expected in data_movie
 
 
 def test_data_key_not_found(get_movie):
+    get_movie.get_movie(title='star wars')
     data_movie = get_movie.get_data('Plot')
-    assert data_movie['Plot'] == 'key not found!'
+    assert data_movie['plot'] == 'key not found!'
 
 
 def test_get_data_invalid():
-    url = movie_search.GetMovie(title='star wars', api_key='1111')
-    assert url.get_all_data() == 'Invalid API key!'
+    movie = movie_search.GetMovie(api_key='1111')
+    assert movie.get_movie(title='star wars') == 'Invalid API key!'

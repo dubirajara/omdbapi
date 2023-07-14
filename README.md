@@ -58,8 +58,7 @@ Get all data movie json format:
  'dvd': '24 May 2016',
  'boxoffice': '$188,020,017',
  'production': 'Lynda Obst Productions, Syncopy',
- 'website': 'N/A',
- 'response': 'True'}
+ 'website': 'N/A'}
 
 ```
 Or can set full plot as parameter:
@@ -90,10 +89,21 @@ Or can set full plot as parameter:
  'dvd': '24 May 2016',
  'boxoffice': '$188,020,017',
  'production': 'Lynda Obst Productions, Syncopy',
- 'website': 'N/A',
- 'response': 'True'}
+ 'website': 'N/A'}
 
 ```
+Get value using class attributes:
+```python
+>>> movie.director
+'Christopher Nolan'
+
+>>> movie.poster
+'https://m.media-amazon.com/images/M/MV5BZjdkOTU3MDktN2IxOS00OGEyLWFmMjktY2FiMmZkNWIyODZiXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_SX300.jpg'
+
+>>> movie.awards
+'Won 1 Oscar. Another 43 wins & 148 nominations.'
+```
+
 
 Get values using keys as parameter:
 ```python

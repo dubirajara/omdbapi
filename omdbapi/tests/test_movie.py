@@ -3,6 +3,7 @@ from unittest.mock import Mock
 import pytest
 
 from omdbapi import movie_search
+from omdbapi.movie_search import GetMovieException
 
 
 @pytest.fixture
@@ -17,7 +18,7 @@ def get_movie(mocker):
         'Actors': 'Mark Hamill, Harrison Ford, Carrie Fisher, Peter Cushing',
         'Awards': 'Won 6 Oscars. Another 50 wins & 28 nominations.',
         'Response': 'True'
-         }
+    }
     get_mock = mocker.patch('omdbapi.movie_search.requests.get')
     get_mock.return_value = resp_mock
     movie = movie_search.GetMovie(api_key='12345')
@@ -26,7 +27,7 @@ def get_movie(mocker):
 
 @pytest.mark.parametrize(
     'expected',
-    ('title', 'awards', 'year', 'genre', 'writer', 'response', 'actors', 'director')
+    ('title', 'awards', 'year', 'genre', 'writer', 'actors', 'director')
 )
 def test_get_all_data(expected, get_movie):
     movie = get_movie.get_movie(title='star wars')
@@ -35,7 +36,7 @@ def test_get_all_data(expected, get_movie):
 
 def test_repr():
     movie = movie_search.GetMovie(api_key='12345')
-    assert repr(movie) == "GetMovie(api_key='12345', values=None)"
+    assert repr(movie) == "GetMovie(api_key='12345', values={})"
 
 
 @pytest.mark.parametrize(
@@ -48,6 +49,17 @@ def test_get_data(expected, get_movie):
     assert expected in data_movie
 
 
+@pytest.mark.parametrize(
+    'field, value',
+    [('title', 'Star Wars: Episode IV - A New Hope'),
+     ('director', 'George Lucas'),
+     ('genre', 'Action, Adventure, Fantasy')]
+)
+def test_get_data_by_attributes(field, value, get_movie):
+    get_movie.get_movie(title='star wars')
+    assert getattr(get_movie, field) == value
+
+
 def test_data_key_not_found(get_movie):
     get_movie.get_movie(title='star wars')
     data_movie = get_movie.get_data('Plot')
@@ -55,5 +67,7 @@ def test_data_key_not_found(get_movie):
 
 
 def test_get_data_invalid():
-    movie = movie_search.GetMovie(api_key='1111')
-    assert movie.get_movie(title='star wars') == 'Invalid API key!'
+    with pytest.raises(GetMovieException) as e:
+        movie = movie_search.GetMovie(api_key='1111')
+        movie.get_movie(title='star wars')
+    assert str(e.value) == 'Invalid API key!'
